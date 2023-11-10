@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<title>Pirkiniu sarasas</title>
+</head>
+<body>
+	<h2>Pirkiniu sarasas</h2>
+	<div th:switch="${kvitai}">
+		<h2 th:case="null">Duomenu apie prekes neturime</h2>
+		<div th:case="*">
+			<div th:each="el: ${kvitai}">
+				<table>
+					<thead>
+						<tr>
+							<th>Pavadinimas</th>
+							<th>Kaina</th>
+							<th>Kiekis</th>
+							<th>Suma</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="irasas : ${el.irasai}">
+							<td th:text="${irasas.pavadinimas}"></td>
+							<td th:text="${irasas.kaina}"></td>
+							<td th:text="${irasas.kiekis}"></td>
+							<td th:text="${irasas.suma}"></td>
+						</tr>
+						<tr>
+							<td><h3>Suma:</h3></td>
+							<td></td>
+							<td></td>
+							<td><h3 th:text="${el.suma}"></h3></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
